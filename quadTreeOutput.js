@@ -26,7 +26,6 @@ const canvasCtx = mainCanvas.getContext("2d");
 // --------------------------------------------------
 // Quadtree setup
 
-//root boundary is at the center of the cavas, and it's the size of the canvas itself
 let rootBoundary = new Rectangle(0, 0, canvW, canvH);
 let qTree = new QuadTree(rootBoundary);
 console.log("QQQ qTree ", qTree);
@@ -36,8 +35,7 @@ console.log("QQQ qTree ", qTree);
 // insert the first set of particles into the quadtree
 let totalParticles = 0;
 let particlesPosOffset = 10;
-// for rebuilding the quadtree each frame of the simulation
-let particlesArr = [];
+
 //--- insert first particles
 for (let i = 0; i < totalParticles; i++) {
   let rp = getRandomPosition(0, canvW - particlesPosOffset, canvH - particlesPosOffset, 0);
@@ -84,63 +82,3 @@ mainCanvas.addEventListener("mousemove", function (event) {
 // --------------------------------------------------
 // --------------------------------------------------
 // --------------------------------------------------
-
-/* 
-
-// Draw a red filled rectangle
-ctx.fillStyle = 'red';
-ctx.fillRect(10, 10, 150, 100);
-
-// Draw a blue outlined rectangle
-ctx.strokeStyle = 'blue';
-ctx.lineWidth = 5;
-ctx.strokeRect(200, 10, 150, 100);
-
-*/
-
-// programMainLoop renders the generated code of the program into the canvas
-// instructionsTable, currentMemoryLayer, totalMemoryLayers come from the SWP_v3.js file
-const programMainLoop = () => {
-  // clearRect(x, y, width, height)
-  // console.log("QQQ memHeight: \n ", memHeight);
-  // console.log("QQQ app is running \n ");
-  // canvasCtx.fillStyle = currCellColor;
-  // //draw memory cell (x,y,w,h)
-  // canvasCtx.fillRect(column * cellSize, row * cellSize, cellSize, cellSize);
-};
-
-// --------------------------------------------------
-// --------------------------------------------------
-
-let intervalId;
-
-//interval for the main loop
-if (!intervalId) {
-  intervalId = setInterval(programMainLoop, 50);
-}
-
-//logic for keypress
-// q key ---> stop the program.
-document.addEventListener("keydown", (event) => {
-  //---------------------------------
-  //---------------------------------
-  //stop looping and generating data ("stops" the program)
-  if (event.key === "q") {
-    clearInterval(intervalId);
-    // release our intervalId from the variable
-    intervalId = null;
-  }
-
-  //---------------------------------
-  //---------------------------------
-  //log snapshot of memory in the console
-  // if (event.key === "z") {
-  //   console.log("QQQ memory snapshot : \n ");
-  // }
-  //---------------------------------
-  //---------------------------------
-  //reload page like F5
-  // if (event.key === "g") {
-  //   window.location.reload();
-  // }
-});
