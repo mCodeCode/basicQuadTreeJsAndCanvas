@@ -32,17 +32,7 @@ class Rectangle {
     let ry = this.y;
     let rw = this.w;
     let rh = this.h;
-    // console.log("QQQ point ", point);
-    // console.log("QQQ rx ", rx);
-    // console.log("QQQ ry ", ry);
-    // console.log("QQQ rw ", rw);
-    // console.log("QQQ rh ", rh);
-    // console.log("QQQ debug : px >= rx ", px >= rx);
-    // console.log("QQQ debug : px <= rx + rw ", px <= rx + rw);
-    // console.log("QQQ debug : py >= ry ", py >= ry);
-    // console.log("QQQ debug : py <= ry + rh ", py <= ry + rh);
-    // console.log("QQQ debug -------------");
-    // console.log("QQQ debug -------------");
+  
     return px >= rx && px < rx + rw && py >= ry && py < ry + rh;
   }
 }
@@ -59,7 +49,6 @@ class Rectangle {
 //* this process repeats, untill the point/all points are inserted into a quadtree
 //* each quadTree has a list of points to keep track of, along with a variable to check if its full
 
-//new Rectangle(canvW / 2, canvH / 2, canvW / 2, canvH / 2); for subdivision
 class QuadTree {
   // ---------------------------
   // ---------------------------
@@ -125,8 +114,8 @@ class QuadTree {
   }
   // ---------------------------
   // ---------------------------
+  // this method depends on what you use to draw the quadtree
   draw(canvasCtx) {
-    // canvasCtx.clearRect(0, 0, window.innerWidth, window.innerHeight);
     //---
     canvasCtx.strokeStyle = "orange";
     canvasCtx.lineWidth = 3;
